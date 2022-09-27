@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react'
 import { Test } from '@components/Test'
+import { render } from '@testing-library/react'
 
 describe('sample test', () => {
 	it('should pass', () => {
