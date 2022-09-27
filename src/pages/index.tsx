@@ -1,4 +1,3 @@
-import { Test } from '@components/Test'
 import { Button, Container, Stack } from '@mantine/core'
 import type { NextPage } from 'next'
 
@@ -6,7 +5,7 @@ const Home: NextPage = () => {
 	return (
 		<Container pt="xl">
 			<Stack align="flex-start">
-				<Button>Mantine button</Button>
+				<Button>default button</Button>
 				<Button variant="filled">filled button</Button>
 				<Button variant="light">light button</Button>
 				<Button variant="outline">outline button</Button>
