@@ -13,6 +13,7 @@ const customJestConfig = {
 	moduleDirectories: ['node_modules', '<rootDir>/'],
 	moduleNameMapper: {
 		'^@components/(.*)$': '<rootDir>/src/components/$1',
+		'^@public/(.*)$': '<rootDir>/public/$1',
 	},
 	testEnvironment: 'jest-environment-jsdom',
 }
