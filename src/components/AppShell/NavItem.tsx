@@ -33,7 +33,7 @@ const NavItem: FC<Props> = ({
 	}
 
 	const buttonProps: ButtonProps = {
-		leftIcon: <Icon icon={icon} {...iconProps} />,
+		leftIcon: <Icon icon={icon} size={20} {...iconProps} />,
 		variant: 'filled',
 		sx: theme => ({
 			backgroundColor: active ? theme.colors.brand[5] : 'transparent',

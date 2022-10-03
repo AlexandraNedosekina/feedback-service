@@ -23,6 +23,11 @@ export const mantineTheme: MantineThemeOverride = {
 	},
 	primaryColor: 'brand',
 	primaryShade: 5,
+	fontFamily: 'Rubik, sans-serif',
+	headings: {
+		fontFamily: 'Montserrat, sans-serif',
+		fontWeight: 700,
+	},
 	components: {
 		Button: {
 			defaultProps: ButtonDefaultProps,
@@ -33,6 +38,7 @@ export const mantineTheme: MantineThemeOverride = {
 						params.variant === 'filled'
 							? `inset 0px -2px 0px ${theme.colors.brand[7]}`
 							: undefined,
+					fontWeight: 400,
 					'&:disabled': {
 						backgroundColor: theme.colors.brand[3],
 						color: 'white',
