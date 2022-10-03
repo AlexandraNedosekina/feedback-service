@@ -1,9 +1,13 @@
 import Icon from '@components/Icon'
 import { ActionIcon, Header as HeaderMantine, Menu } from '@mantine/core'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 const Header: FC = () => {
+	const router = useRouter()
+
 	return (
 		<HeaderMantine
 			sx={theme => ({
@@ -29,8 +33,16 @@ const Header: FC = () => {
 					</ActionIcon>
 				</Menu.Target>
 				<Menu.Dropdown>
-					<Menu.Item>Профиль</Menu.Item>
-					<Menu.Item>Выйти</Menu.Item>
+					<Link href="/profile" passHref>
+						<Menu.Item component="a">Профиль</Menu.Item>
+					</Link>
+					<Menu.Item
+						onClick={() => {
+							router.push('/login')
+						}}
+					>
+						Выйти
+					</Menu.Item>
 				</Menu.Dropdown>
 			</Menu>
 		</HeaderMantine>

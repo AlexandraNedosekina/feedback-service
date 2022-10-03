@@ -1,12 +1,24 @@
 import { MantineProvider } from '@mantine/core'
+import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import { ReactElement, ReactNode } from 'react'
 import '../styles/global.css'
 import { mantineTheme } from '../styles/mantineTheme'
 
-function MyApp({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+	getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+	Component: NextPageWithLayout
+}
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+	const getLayout = Component.getLayout ?? (page => page)
+
 	return (
 		<MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
-			<Component {...pageProps} />
+			{getLayout(<Component {...pageProps} />)}
 		</MantineProvider>
 	)
 }

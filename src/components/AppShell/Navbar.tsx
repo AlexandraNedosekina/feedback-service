@@ -12,17 +12,17 @@ const navItems: { icon: Icons; href: string; text: string }[] = [
 	},
 	{
 		icon: 'star',
-		href: '#',
+		href: '/feedback',
 		text: 'Оценки',
 	},
 	{
 		icon: 'trending_up',
-		href: '#',
+		href: '/career',
 		text: 'Карьерный рост',
 	},
 	{
 		icon: 'group',
-		href: '#',
+		href: '/communication',
 		text: 'Записаться на общение',
 	},
 ]
