@@ -1,18 +1,26 @@
 import { MantineSize, useMantineTheme } from '@mantine/core'
 import { FC } from 'react'
 
-type Icons = 'account_circle' | 'filter_alt' | 'search' | 'star'
+export type Icons =
+	| 'account_circle'
+	| 'filter_alt'
+	| 'search'
+	| 'star'
+	| 'home'
+	| 'trending_up'
+	| 'group'
+	| 'double_arrow'
 type IconType = 'outlined' | 'rounded' | 'sharp'
 type IconSize = MantineSize | number
 
-interface Props {
+export interface IconProps {
 	icon: Icons
 	type?: IconType
 	size?: IconSize
 	filled?: boolean
 }
 
-const Icon: FC<Props> = ({ icon, size, type = 'outlined', filled = false }) => {
+const Icon: FC<IconProps> = ({ icon, size, type = 'outlined', filled }) => {
 	const theme = useMantineTheme()
 
 	return (
