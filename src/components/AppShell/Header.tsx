@@ -1,21 +1,38 @@
 import Icon from '@components/Icon'
-import { ActionIcon, Header as HeaderMantine, Menu } from '@mantine/core'
+import {
+	ActionIcon,
+	createStyles,
+	Header as HeaderMantine,
+	Menu,
+} from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
+const useStyles = createStyles(theme => ({
+	header: {
+		backgroundColor: theme.colors.brand[5],
+		display: 'flex',
+		justifyContent: 'space-between',
+		alignItems: 'center',
+	},
+	dropdown: {
+		backgroundColor: theme.colors.brand[1],
+	},
+	item: {
+		color: theme.colors.brand[5],
+	},
+}))
+
 const Header: FC = () => {
+	const { classes } = useStyles()
+
 	const router = useRouter()
 
 	return (
 		<HeaderMantine
-			sx={theme => ({
-				backgroundColor: theme.colors.brand[5],
-				display: 'flex',
-				justifyContent: 'space-between',
-				alignItems: 'center',
-			})}
+			className={classes.header}
 			height={60}
 			px="xl"
 			withBorder={false}
@@ -26,7 +43,13 @@ const Header: FC = () => {
 				height={26}
 				alt="66bit feedback service"
 			/>
-			<Menu position="bottom-end">
+			<Menu
+				position="bottom-end"
+				classNames={{
+					dropdown: classes.dropdown,
+					item: classes.item,
+				}}
+			>
 				<Menu.Target>
 					<ActionIcon variant="filled" color="brand" size="lg">
 						<Icon icon="account_circle" size={28} />
