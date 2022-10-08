@@ -10,6 +10,7 @@ interface Props {
 	text?: string
 	isFull?: boolean
 	iconProps?: Partial<IconProps>
+	closeMenu?: () => void
 }
 
 const NavItem: FC<Props> = ({
@@ -19,6 +20,7 @@ const NavItem: FC<Props> = ({
 	isFull,
 	text,
 	iconProps,
+	closeMenu,
 }) => {
 	const actionIconProps: ActionIconProps = {
 		variant: 'transparent',
@@ -49,11 +51,11 @@ const NavItem: FC<Props> = ({
 	return (
 		<Link href={href} passHref>
 			{isFull ? (
-				<Button component="a" {...buttonProps}>
+				<Button component="a" {...buttonProps} onClick={closeMenu}>
 					{text}
 				</Button>
 			) : (
-				<ActionIcon component="a" {...actionIconProps}>
+				<ActionIcon component="a" {...actionIconProps} onClick={closeMenu}>
 					<Icon icon={icon} size={24} {...iconProps} />
 				</ActionIcon>
 			)}

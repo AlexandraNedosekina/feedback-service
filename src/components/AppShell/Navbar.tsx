@@ -1,5 +1,12 @@
 import Icon, { Icons } from '@components/Icon'
-import { ActionIcon, Box, Navbar as NavbarMantine, Stack } from '@mantine/core'
+import {
+	ActionIcon,
+	Box,
+	UnstyledButton,
+	MediaQuery,
+	Navbar as NavbarMantine,
+	Stack,
+} from '@mantine/core'
 import { useRouter } from 'next/router'
 import { FC, useState } from 'react'
 import NavItem from './NavItem'
@@ -27,7 +34,12 @@ const navItems: { icon: Icons; href: string; text: string }[] = [
 	},
 ]
 
-const Navbar: FC = () => {
+interface Props {
+	isOpen: boolean
+	closeMenu: () => void
+}
+
+const Navbar: FC<Props> = ({ isOpen, closeMenu }) => {
 	const router = useRouter()
 
 	const [isFull, setIsFull] = useState(true)
@@ -38,12 +50,14 @@ const Navbar: FC = () => {
 
 	return (
 		<NavbarMantine
-			width={{ lg: isFull ? 270 : 60 }}
+			width={{ sm: isFull ? 270 : 60 }}
 			sx={theme => ({
 				backgroundColor: theme.colors.brand[7],
 			})}
 			withBorder={false}
 			px="lg"
+			hiddenBreakpoint="sm"
+			hidden={!isOpen}
 		>
 			<Stack
 				justify="space-between"
@@ -51,7 +65,17 @@ const Navbar: FC = () => {
 				py="xl"
 				sx={() => ({ height: '100%' })}
 			>
-				<Stack>
+				<Stack sx={() => ({ width: '100%' })}>
+					<MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+						<NavItem
+							icon={'account_circle'}
+							href="/profile"
+							text="Профиль"
+							isFull={true}
+							active={router.pathname === '/profile'}
+							closeMenu={closeMenu}
+						/>
+					</MediaQuery>
 					{navItems.map((item, i) => (
 						<NavItem
 							key={i}
@@ -67,8 +91,23 @@ const Navbar: FC = () => {
 									: undefined
 							}
 							active={router.pathname === item.href}
+							closeMenu={closeMenu}
 						/>
 					))}
+					<MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+						<UnstyledButton
+							sx={theme => ({
+								color: 'white',
+								fontSize: theme.fontSizes.sm,
+							})}
+							ml="sm"
+							onClick={() => {
+								router.push('/login')
+							}}
+						>
+							Выйти
+						</UnstyledButton>
+					</MediaQuery>
 				</Stack>
 
 				<Box

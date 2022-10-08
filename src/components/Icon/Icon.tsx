@@ -10,6 +10,8 @@ export type Icons =
 	| 'trending_up'
 	| 'group'
 	| 'double_arrow'
+	| 'menu'
+	| 'close'
 type IconType = 'outlined' | 'rounded' | 'sharp'
 type IconSize = MantineSize | number
 
