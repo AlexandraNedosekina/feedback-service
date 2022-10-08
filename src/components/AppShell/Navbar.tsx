@@ -65,8 +65,21 @@ const Navbar: FC<Props> = ({ isOpen, closeMenu }) => {
 				py="xl"
 				sx={() => ({ height: '100%' })}
 			>
-				<Stack sx={() => ({ width: '100%' })}>
-					<MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+				<Stack
+					sx={theme => ({
+						[`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+							width: '100%',
+						},
+					})}
+				>
+					<Box
+						sx={theme => ({
+							display: 'none',
+							[`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+								display: 'block',
+							},
+						})}
+					>
 						<NavItem
 							icon={'account_circle'}
 							href="/profile"
@@ -75,7 +88,7 @@ const Navbar: FC<Props> = ({ isOpen, closeMenu }) => {
 							active={router.pathname === '/profile'}
 							closeMenu={closeMenu}
 						/>
-					</MediaQuery>
+					</Box>
 					{navItems.map((item, i) => (
 						<NavItem
 							key={i}
