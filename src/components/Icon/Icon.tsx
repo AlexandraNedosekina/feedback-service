@@ -12,6 +12,8 @@ export type Icons =
 	| 'double_arrow'
 	| 'menu'
 	| 'close'
+	| 'calendar_month'
+	| 'add'
 type IconType = 'outlined' | 'rounded' | 'sharp'
 type IconSize = MantineSize | number
 
