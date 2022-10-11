@@ -5,7 +5,7 @@ import { NextPageWithLayout } from './_app'
 const CommunicationPage: NextPageWithLayout = () => {
 	return (
 		<Container>
-			<Title>Записаться на общение</Title>
+			<Title>Календарь встреч</Title>
 		</Container>
 	)
 }
