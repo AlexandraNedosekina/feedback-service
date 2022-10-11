@@ -2,13 +2,13 @@ import Icon, { Icons } from '@components/Icon'
 import {
 	ActionIcon,
 	Box,
-	UnstyledButton,
 	MediaQuery,
 	Navbar as NavbarMantine,
 	Stack,
+	UnstyledButton,
 } from '@mantine/core'
 import { useRouter } from 'next/router'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import NavItem from './NavItem'
 
 const navItems: { icon: Icons; href: string; text: string }[] = [
@@ -28,9 +28,9 @@ const navItems: { icon: Icons; href: string; text: string }[] = [
 		text: 'Карьерный рост',
 	},
 	{
-		icon: 'group',
-		href: '/communication',
-		text: 'Записаться на общение',
+		icon: 'calendar_month',
+		href: '/calendar',
+		text: 'Календарь встреч',
 	},
 ]
 
@@ -42,11 +42,28 @@ interface Props {
 const Navbar: FC<Props> = ({ isOpen, closeMenu }) => {
 	const router = useRouter()
 
-	const [isFull, setIsFull] = useState(true)
+	const [isFull, setIsFull] = useState<boolean>(false)
 
 	const toggleFull = () => {
 		setIsFull(!isFull)
+
+		if (typeof window !== 'undefined') {
+			window.localStorage.setItem('isFull', JSON.stringify(!isFull))
+		}
 	}
+
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			const isFullLocalStorage = window.localStorage.getItem('isFull')
+
+			if (typeof isFullLocalStorage === 'string') {
+				setIsFull(!!JSON.parse(isFullLocalStorage))
+			} else {
+				window.localStorage.setItem('isFull', JSON.stringify(isFull))
+			}
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	return (
 		<NavbarMantine
