@@ -1,12 +1,5 @@
-import {
-	Avatar,
-	Badge,
-	Container,
-	Group,
-	Stack,
-	Text,
-	Title,
-} from '@mantine/core'
+import { ProfileBadgesGroup } from '@components/Profile'
+import { Avatar, Container, Group, Stack, Text, Title } from '@mantine/core'
 import { BaseLayout } from 'src/layouts'
 import { NextPageWithLayout } from './_app'
 
@@ -16,7 +9,7 @@ const ProfilePage: NextPageWithLayout = () => {
 			<Title mb="xl">Профиль</Title>
 
 			<Group mb="xl">
-				<Avatar src={null} size={96} />
+				<Avatar src={null} radius={100} size={96} />
 
 				<Stack spacing={6}>
 					<Text size={18}>Иван Иванов</Text>
@@ -32,17 +25,50 @@ const ProfilePage: NextPageWithLayout = () => {
 				</Stack>
 			</Group>
 
-			<Stack>
-				<Title order={2}>Навыки</Title>
-
-				<Group>
-					<Badge size="xl" radius="sm">
-						react
-					</Badge>
-					<Badge size="xl" radius="sm">
-						react
-					</Badge>
-				</Group>
+			<Stack spacing={'xl'}>
+				<ProfileBadgesGroup
+					title="Навыки"
+					badges={[
+						{
+							id: '1',
+							label: 'React',
+						},
+						{
+							id: '2',
+							label: 'Next.js',
+						},
+					]}
+				/>
+				<ProfileBadgesGroup
+					title="Факты о себе"
+					badges={[
+						{
+							id: '1',
+							label: 'интроверт',
+						},
+						{
+							id: '2',
+							label: 'пицца',
+						},
+						{
+							id: '3',
+							label: 'котики',
+						},
+					]}
+				/>
+				<ProfileBadgesGroup
+					title="Ожидания"
+					badges={[
+						{
+							id: '1',
+							label: 'профессиональный рост',
+						},
+						{
+							id: '2',
+							label: 'зп 250к',
+						},
+					]}
+				/>
 			</Stack>
 		</Container>
 	)
