@@ -1,10 +1,16 @@
 import {
+	BadgeProps,
+	BadgeStylesParams,
 	ButtonProps,
 	ButtonStylesParams,
 	MantineThemeOverride,
 } from '@mantine/core'
 
 const ButtonDefaultProps: Partial<ButtonProps> = {}
+const BadgeDefaultProps: Partial<BadgeProps> = {
+	radius: 'sm',
+	size: 'xl',
+}
 
 export const mantineTheme: MantineThemeOverride = {
 	colors: {
@@ -64,6 +70,15 @@ export const mantineTheme: MantineThemeOverride = {
 						color: 'white',
 						boxShadow: `inset 0px -2px 0px ${theme.colors.brand[4]}`,
 					},
+				},
+			}),
+		},
+		Badge: {
+			defaultProps: BadgeDefaultProps,
+			styles: (theme, params: BadgeStylesParams) => ({
+				root: {
+					fontWeight: 'normal',
+					textTransform: 'none',
 				},
 			}),
 		},
