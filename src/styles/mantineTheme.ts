@@ -27,6 +27,26 @@ export const mantineTheme: MantineThemeOverride = {
 	headings: {
 		fontFamily: 'Montserrat, sans-serif',
 		fontWeight: 700,
+		sizes: {
+			h1: {
+				fontSize: 32,
+			},
+			h2: {
+				fontSize: 24,
+			},
+			h3: {
+				fontSize: 19,
+			},
+			h4: {
+				fontSize: 16,
+			},
+			h5: {
+				fontSize: 14,
+			},
+			h6: {
+				fontSize: 13,
+			},
+		},
 	},
 	components: {
 		Button: {
