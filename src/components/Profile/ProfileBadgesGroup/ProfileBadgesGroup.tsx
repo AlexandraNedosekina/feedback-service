@@ -1,8 +1,19 @@
 import Icon from '@components/Icon'
-import { ActionIcon, Badge, Group, Input, Stack, Title } from '@mantine/core'
+import {
+	ActionIcon,
+	Badge,
+	Button,
+	Group,
+	Input,
+	Popover,
+	Stack,
+	Text,
+	Title,
+} from '@mantine/core'
 import { useClickOutside, useFocusTrap } from '@mantine/hooks'
 import React, { FC, useState } from 'react'
 import { IProfileBadge } from 'src/types/profile'
+import ProfileBadge from '../ProfileBadge/ProfileBadge'
 import { useStyles } from './useStyles'
 
 interface IProps {
@@ -37,13 +48,30 @@ const ProfileBadgesGroup: FC<IProps> = ({ badges: defaultBadges, title }) => {
 		setIsEditMode(false)
 	}
 
+	const onDelete = (id: string) => {
+		setBadges(badges.filter(badge => badge.id !== id))
+	}
+
+	const onUpdate = (id: string, label: string) => {
+		setBadges(b => {
+			const index = b.findIndex(badge => badge.id === id)
+			b[index].label = label
+			return [...b]
+		})
+	}
+
 	return (
 		<Stack spacing={'xs'}>
 			<Title order={2}>{title}</Title>
 
 			<Group>
 				{badges.map(badge => (
-					<Badge key={badge.id}>{badge.label}</Badge>
+					<ProfileBadge
+						key={badge.id}
+						badge={badge}
+						onDelete={onDelete}
+						onUpdate={onUpdate}
+					/>
 				))}
 
 				{isEditMode ? (

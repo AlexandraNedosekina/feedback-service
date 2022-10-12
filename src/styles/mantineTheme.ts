@@ -62,7 +62,11 @@ export const mantineTheme: MantineThemeOverride = {
 					borderRadius: '4px',
 					boxShadow:
 						params.variant === 'filled'
-							? `inset 0px -2px 0px ${theme.colors.brand[7]}`
+							? `inset 0px -2px 0px ${
+									theme.colors[params.color ?? 'brand'][
+										+theme.primaryShade + 2
+									]
+							  }`
 							: undefined,
 					fontWeight: 400,
 					'&:disabled': {

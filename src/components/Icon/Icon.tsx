@@ -14,6 +14,8 @@ export type Icons =
 	| 'close'
 	| 'calendar_month'
 	| 'add'
+	| 'edit'
+	| 'done'
 type IconType = 'outlined' | 'rounded' | 'sharp'
 type IconSize = MantineSize | number
 
