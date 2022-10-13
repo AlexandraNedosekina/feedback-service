@@ -16,6 +16,7 @@ export type Icons =
 	| 'add'
 	| 'edit'
 	| 'done'
+	| 'expand_more'
 type IconType = 'outlined' | 'rounded' | 'sharp'
 type IconSize = MantineSize | number
 

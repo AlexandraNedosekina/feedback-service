@@ -1,5 +1,13 @@
 import { ProfileBadgesGroup } from '@components/Profile'
-import { Avatar, Container, Group, Stack, Text, Title } from '@mantine/core'
+import {
+	Avatar,
+	Container,
+	Group,
+	Select,
+	Stack,
+	Text,
+	Title,
+} from '@mantine/core'
 import { BaseLayout } from 'src/layouts'
 import { NextPageWithLayout } from './_app'
 
@@ -69,6 +77,24 @@ const ProfilePage: NextPageWithLayout = () => {
 						},
 					]}
 				/>
+
+				<Stack spacing={'xs'}>
+					<Title order={2}>Формат работы</Title>
+
+					<Select
+						sx={() => ({
+							alignSelf: 'flex-start',
+						})}
+						data={[
+							{ label: 'В офисе', value: 'office' },
+							{
+								label: 'Удаленно',
+								value: 'remote',
+							},
+						]}
+						placeholder="Выберите формат работы"
+					/>
+				</Stack>
 			</Stack>
 		</Container>
 	)

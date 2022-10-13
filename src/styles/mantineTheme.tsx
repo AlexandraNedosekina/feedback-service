@@ -1,15 +1,20 @@
+import Icon from '@components/Icon'
 import {
 	BadgeProps,
 	BadgeStylesParams,
 	ButtonProps,
 	ButtonStylesParams,
 	MantineThemeOverride,
+	SelectProps,
 } from '@mantine/core'
 
 const ButtonDefaultProps: Partial<ButtonProps> = {}
 const BadgeDefaultProps: Partial<BadgeProps> = {
 	radius: 'sm',
 	size: 'xl',
+}
+const SelectDefaultProps: Partial<SelectProps> = {
+	rightSection: <Icon icon="expand_more" />,
 }
 
 export const mantineTheme: MantineThemeOverride = {
@@ -83,6 +88,19 @@ export const mantineTheme: MantineThemeOverride = {
 				root: {
 					fontWeight: 'normal',
 					textTransform: 'none',
+				},
+			}),
+		},
+		Select: {
+			defaultProps: SelectDefaultProps,
+			styles: theme => ({
+				input: {
+					border: `1px solid ${theme.colors.brand[5]}`,
+					color: theme.colors.brand[5],
+				},
+				rightSection: {
+					color: theme.colors.brand[5],
+					pointerEvents: 'none',
 				},
 			}),
 		},
