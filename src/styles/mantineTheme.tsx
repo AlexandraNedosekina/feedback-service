@@ -104,5 +104,12 @@ export const mantineTheme: MantineThemeOverride = {
 				},
 			}),
 		},
+		TimeRangeInput: {
+			styles: theme => ({
+				input: {
+					border: `1px solid ${theme.colors.brand[5]}`,
+				},
+			}),
+		},
 	},
 }

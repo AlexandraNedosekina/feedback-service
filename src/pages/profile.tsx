@@ -8,6 +8,7 @@ import {
 	Text,
 	Title,
 } from '@mantine/core'
+import { TimeRangeInput } from '@mantine/dates'
 import { BaseLayout } from 'src/layouts'
 import { NextPageWithLayout } from './_app'
 
@@ -94,6 +95,16 @@ const ProfilePage: NextPageWithLayout = () => {
 						]}
 						placeholder="Выберите формат работы"
 					/>
+				</Stack>
+
+				<Stack
+					spacing="xs"
+					sx={() => ({
+						alignSelf: 'flex-start',
+					})}
+				>
+					<Title order={2}>График работы</Title>
+					<TimeRangeInput clearable />
 				</Stack>
 			</Stack>
 		</Container>
