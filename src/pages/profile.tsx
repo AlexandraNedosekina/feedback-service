@@ -5,6 +5,7 @@ import {
 	Group,
 	Select,
 	Stack,
+	Switch,
 	Text,
 	Title,
 } from '@mantine/core'
@@ -97,14 +98,20 @@ const ProfilePage: NextPageWithLayout = () => {
 					/>
 				</Stack>
 
-				<Stack
-					spacing="xs"
-					sx={() => ({
-						alignSelf: 'flex-start',
-					})}
-				>
+				<Stack spacing="xs">
 					<Title order={2}>График работы</Title>
-					<TimeRangeInput clearable />
+					<TimeRangeInput
+						clearable
+						sx={() => ({
+							alignSelf: 'flex-start',
+						})}
+					/>
+				</Stack>
+
+				<Stack spacing="xs">
+					<Title order={2}>Готовность к личным встречам</Title>
+
+					<Switch />
 				</Stack>
 			</Stack>
 		</Container>
