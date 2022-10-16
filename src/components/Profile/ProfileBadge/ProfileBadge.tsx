@@ -19,7 +19,7 @@ const ProfileBadge: FC<IProps> = ({ badge, onDelete, onUpdate }) => {
 	const [updatedLabel, setUpdatedLabel] = useState(badge.label)
 
 	return (
-		<Badge key={badge.id} className={classes.badge}>
+		<Badge key={badge.id} className={classes.badge} data-testid="badge">
 			{badge.label}
 
 			<UpdatePopover

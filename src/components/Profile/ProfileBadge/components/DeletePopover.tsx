@@ -27,15 +27,20 @@ const DeletePopover: FC<IProps> = ({
 					className={cx(classes.badgeActionsCommon, classes.deleteBadge)}
 					size="xs"
 					onClick={onOpen}
+					data-testid="delete-badge"
 				>
 					<Icon icon="close" />
 				</ActionIcon>
 			</Popover.Target>
-			<Popover.Dropdown>
+			<Popover.Dropdown data-testid="dropdown">
 				<Text align="center">Удалить?</Text>
 
 				<Group position="center" spacing="xs" noWrap>
-					<Button color="red" onClick={onDelete}>
+					<Button
+						color="red"
+						onClick={onDelete}
+						data-testid="delete-badge-submit"
+					>
 						Да
 					</Button>
 					<Button onClick={onClose}>Нет</Button>
