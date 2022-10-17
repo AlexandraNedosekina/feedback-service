@@ -31,21 +31,21 @@ describe('ProfileBadgesGroup', () => {
 		expect(container).toBeInTheDocument()
 	})
 
-	it('should add item', async () => {
+	it('should add item', () => {
 		render(<ProfileBadgesGroup badges={badges} title="test" />)
 		let badgesElements = screen.getAllByTestId('badge')
 		expect(badgesElements).toHaveLength(2)
 
-		const addButton = await screen.findByTestId('add-badge')
+		const addButton = screen.getByTestId('add-badge')
 		fireEvent.click(addButton)
 
-		const input = await screen.findByLabelText('label')
-		const addButtonSubmit = await screen.findByTestId('add-badge-submit')
+		const input = screen.getByLabelText('label')
+		const addButtonSubmit = screen.getByTestId('add-badge-submit')
 
 		fireEvent.change(input, { target: { value: 'test badge' } })
 		fireEvent.click(addButtonSubmit)
 
-		const badge = await screen.findByText('test badge')
+		const badge = screen.getByText('test badge')
 		badgesElements = screen.getAllByTestId('badge')
 
 		expect(input).not.toBeInTheDocument()
@@ -53,22 +53,60 @@ describe('ProfileBadgesGroup', () => {
 		expect(badgesElements).toHaveLength(3)
 	})
 
-	it('should remove item', async () => {
+	it('should remove item', () => {
 		render(<ProfileBadgesGroup badges={badges} title="test" />)
 		let badgesElements = screen.getAllByTestId('badge')
 		expect(badgesElements).toHaveLength(2)
 
 		const firstBadge = badgesElements[0]
 
-		const removeButton = await within(firstBadge).findByTestId('delete-badge')
+		const removeButton = within(firstBadge).getByTestId('delete-badge')
 		fireEvent.click(removeButton)
 
-		const removeButtonSubmit = await within(firstBadge).findByTestId(
+		const removeButtonSubmit = within(firstBadge).getByTestId(
 			'delete-badge-submit'
 		)
 		fireEvent.click(removeButtonSubmit)
 
 		badgesElements = screen.getAllByTestId('badge')
 		expect(badgesElements).toHaveLength(1)
+	})
+
+	it('should not update badge on cancel editing', () => {
+		render(<ProfileBadgesGroup badges={badges} title="test" />)
+
+		const badge = screen.getAllByTestId('badge')[0]
+		expect(badge).toHaveTextContent('React')
+
+		const updateButton = within(badge).getByTestId('update-badge')
+		fireEvent.click(updateButton)
+
+		const updateButtonClose = within(badge).getByTestId('update-badge-close')
+		const input = within(badge).getByTestId('update-badge-input')
+
+		fireEvent.change(input, { target: { value: 'test badge' } })
+		fireEvent.click(updateButtonClose)
+
+		expect(badge).toHaveTextContent('React')
+	})
+
+	it('should edit item', () => {
+		render(<ProfileBadgesGroup badges={badges} title="test" />)
+
+		const badge = screen.getAllByTestId('badge')[0]
+		expect(badge).toHaveTextContent('React')
+
+		const updateButton = within(badge).getByTestId('update-badge')
+		fireEvent.click(updateButton)
+
+		const updateButtonSubmit = within(badge).getByTestId(
+			'update-badge-submit'
+		)
+		const input = within(badge).getByTestId('update-badge-input')
+
+		fireEvent.change(input, { target: { value: 'test badge' } })
+		fireEvent.click(updateButtonSubmit)
+
+		expect(badge).toHaveTextContent('test badge')
 	})
 })
