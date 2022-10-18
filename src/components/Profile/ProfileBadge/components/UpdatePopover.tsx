@@ -37,6 +37,7 @@ const UpdatePopover: FC<IProps> = ({
 					className={cx(classes.badgeActionsCommon, classes.updateBadge)}
 					size="xs"
 					onClick={onOpen}
+					data-testid="update-badge"
 				>
 					<Icon icon="edit" />
 				</ActionIcon>
@@ -53,13 +54,21 @@ const UpdatePopover: FC<IProps> = ({
 						value={label}
 						onChange={onInputChange}
 						placeholder="Обновленный текст"
+						data-testid="update-badge-input"
 					/>
 
 					<Group position="center" spacing="xs" noWrap>
-						<ActionIcon color="green" type="submit">
+						<ActionIcon
+							color="green"
+							type="submit"
+							data-testid="update-badge-submit"
+						>
 							<Icon icon="done" />
 						</ActionIcon>
-						<ActionIcon onClick={onClose}>
+						<ActionIcon
+							onClick={onClose}
+							data-testid="update-badge-close"
+						>
 							<Icon icon="close" />
 						</ActionIcon>
 					</Group>

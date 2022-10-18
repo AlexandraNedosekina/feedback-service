@@ -1,15 +1,5 @@
 import Icon from '@components/Icon'
-import {
-	ActionIcon,
-	Badge,
-	Button,
-	Group,
-	Input,
-	Popover,
-	Stack,
-	Text,
-	Title,
-} from '@mantine/core'
+import { ActionIcon, Badge, Group, Input, Stack, Title } from '@mantine/core'
 import { useClickOutside, useFocusTrap } from '@mantine/hooks'
 import React, { FC, useState } from 'react'
 import { IProfileBadge } from 'src/types/profile'
@@ -79,13 +69,17 @@ const ProfileBadgesGroup: FC<IProps> = ({ badges: defaultBadges, title }) => {
 						<form ref={focusTrapRef} onSubmit={onSubmit}>
 							<Input
 								name="label"
+								aria-label="label"
 								sx={() => ({
 									border: 'none !important',
 									margin: 0,
 									padding: 0,
 								})}
 								rightSection={
-									<ActionIcon type="submit">
+									<ActionIcon
+										type="submit"
+										data-testid="add-badge-submit"
+									>
 										<Icon icon="add" />
 									</ActionIcon>
 								}
@@ -99,6 +93,7 @@ const ProfileBadgesGroup: FC<IProps> = ({ badges: defaultBadges, title }) => {
 							root: classes.addBadge,
 						}}
 						onClick={() => setIsEditMode(true)}
+						data-testid="add-badge"
 					>
 						<Group>
 							<Icon icon="add" />
