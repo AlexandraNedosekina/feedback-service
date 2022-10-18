@@ -10,12 +10,17 @@ import {
 	Title,
 } from '@mantine/core'
 import { TimeRangeInput } from '@mantine/dates'
+import Head from 'next/head'
 import { BaseLayout } from 'src/layouts'
 import { NextPageWithLayout } from './_app'
 
 const ProfilePage: NextPageWithLayout = () => {
 	return (
 		<Container>
+			<Head>
+				<title>Профиль</title>
+			</Head>
+
 			<Title mb="xl">Профиль</Title>
 
 			<Group mb="xl">
@@ -92,6 +97,10 @@ const ProfilePage: NextPageWithLayout = () => {
 							{
 								label: 'Удаленно',
 								value: 'remote',
+							},
+							{
+								label: 'Смешанный формат',
+								value: 'mixed',
 							},
 						]}
 						placeholder="Выберите формат работы"

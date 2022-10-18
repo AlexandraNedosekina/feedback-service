@@ -1,4 +1,5 @@
 import { Button, Container, SimpleGrid, Title } from '@mantine/core'
+import Head from 'next/head'
 import { ReactElement } from 'react'
 import { BaseLayout } from 'src/layouts'
 import { NextPageWithLayout } from './_app'
@@ -6,6 +7,9 @@ import { NextPageWithLayout } from './_app'
 const Home: NextPageWithLayout = () => {
 	return (
 		<Container>
+			<Head>
+				<title>Главная</title>
+			</Head>
 			<Title>Главная</Title>
 
 			<SimpleGrid cols={3}>

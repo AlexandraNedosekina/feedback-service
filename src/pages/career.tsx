@@ -1,11 +1,16 @@
 import { Container, Title } from '@mantine/core'
+import Head from 'next/head'
 import { BaseLayout } from 'src/layouts'
 import { NextPageWithLayout } from './_app'
 
 const CareerPage: NextPageWithLayout = () => {
 	return (
 		<Container>
-			<Title>Карьерный рост</Title>
+			<Head>
+				<title>Твой карьерный рост</title>
+			</Head>
+
+			<Title>Твой карьерный рост</Title>
 		</Container>
 	)
 }

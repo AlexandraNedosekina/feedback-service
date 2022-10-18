@@ -1,11 +1,16 @@
 import { Container, Title } from '@mantine/core'
+import Head from 'next/head'
 import { BaseLayout } from 'src/layouts'
 import { NextPageWithLayout } from './_app'
 
 const CommunicationPage: NextPageWithLayout = () => {
 	return (
 		<Container>
-			<Title>Календарь встреч</Title>
+			<Head>
+				<title>Календарь</title>
+			</Head>
+
+			<Title>Календарь</Title>
 		</Container>
 	)
 }
