@@ -1,6 +1,5 @@
-import { ProfileBadgesGroup } from '@components/Profile'
+import { Avatar, ProfileBadgesGroup } from '@components/Profile'
 import {
-	Avatar,
 	Container,
 	Group,
 	Select,
@@ -24,7 +23,9 @@ const ProfilePage: NextPageWithLayout = () => {
 			<Title mb="xl">Профиль</Title>
 
 			<Group mb="xl">
-				<Avatar src={null} radius={100} size={96} />
+				<Avatar
+					src={`https://avatars.dicebear.com/api/identicon/${Date.now()}.svg`}
+				/>
 
 				<Stack spacing={6}>
 					<Text size={18}>Иван Иванов</Text>

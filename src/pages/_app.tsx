@@ -17,7 +17,12 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 	const getLayout = Component.getLayout ?? (page => page)
 
 	return (
-		<MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
+		<MantineProvider
+			withCSSVariables
+			withGlobalStyles
+			withNormalizeCSS
+			theme={mantineTheme}
+		>
 			{getLayout(<Component {...pageProps} />)}
 		</MantineProvider>
 	)
