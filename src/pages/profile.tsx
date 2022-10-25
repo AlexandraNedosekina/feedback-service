@@ -25,6 +25,7 @@ const ProfilePage: NextPageWithLayout = () => {
 			<Group mb="xl">
 				<Avatar
 					src={`https://avatars.dicebear.com/api/identicon/${Date.now()}.svg`}
+					// src={null}
 				/>
 
 				<Stack spacing={6}>
