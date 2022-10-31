@@ -1,6 +1,6 @@
-import { MantineSize, useMantineTheme } from '@mantine/core'
 import { FC } from 'react'
 
+// https://fonts.google.com/icons
 export type Icons =
 	| 'account_circle'
 	| 'filter_alt'
@@ -17,27 +17,23 @@ export type Icons =
 	| 'edit'
 	| 'done'
 	| 'expand_more'
+	| 'file_upload'
+	| 'delete'
 type IconType = 'outlined' | 'rounded' | 'sharp'
-type IconSize = MantineSize | number
 
 export interface IconProps {
 	icon: Icons
 	type?: IconType
-	size?: IconSize
+	size?: number
 	filled?: boolean
 }
 
 const Icon: FC<IconProps> = ({ icon, size, type = 'outlined', filled }) => {
-	const theme = useMantineTheme()
-
 	return (
 		<span
 			className={`material-symbols-${type}`}
 			style={{
-				fontSize:
-					typeof size === 'number'
-						? `${size}px`
-						: theme.fontSizes[size || 'md'],
+				fontSize: size ? `${size}px` : 'inherit',
 				fontVariationSettings: `'FILL' ${
 					filled ? '1' : '0'
 				}, 'wght' 300, 'GRAD' 0, 'opsz' 48`,
